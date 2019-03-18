@@ -1,0 +1,171 @@
+body{
+	background: url(gifs/start-bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Oswald', sans-serif;	
+}
+
+/*Weather Backgrounds*/
+body.storm{
+	background-image: url(gifs/storm.gif);
+    background-size: cover;
+}
+
+body.drizzle{
+	background-image: url(gifs/lightrain.gif);
+    background-size: cover;
+    color: white;
+}
+
+body.heavy-rain{
+	background-image: url(gifs/heavyrain.gif);
+    background-size: cover;
+    color: white;
+}
+
+body.light-snow{
+	background-image: url(gifs/lightsnow.gif);
+    background-size: cover;
+}
+
+body.heavy-snow{
+	background-image: url(gifs/heavysnow.gif);
+    background-size: cover;
+}
+
+body.fog{
+	background-image: url(gifs/fog.gif);
+    background-size: cover;
+}
+
+body.clear{
+	background-image: url(gifs/clearsky.png);
+    background-size: cover;
+}
+
+body.few-clouds{
+	background-image: url(gifs/fewclouds.jpg);
+    background-size: cover;
+}
+
+body.scattered-clouds{
+	background-image: url(gifs/scatteredclouds.jpg);
+    background-size: cover;
+}
+
+body.broken-clouds{
+	background-image: url(gifs/broken-clouds.png);
+    background-size: cover;
+}
+
+body.overcast{
+	background-image: url(gifs/overcast.png);
+    background-size: cover;
+}
+/**************/
+
+
+
+header h1{
+	position: absolute;
+	margin-top: 8px;
+	margin-left: 10px;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+}
+
+/* SEARCH BAR */
+
+header .search-container{
+	margin-top: 15px;
+	text-align: center;
+}
+
+header #search-input{
+	width: 60%;
+	background-color: rgba(0,0,0,0.3);
+	border: none;
+	height: 60px;
+	color: white;
+	font-family: 'Oswald', sans-serif;	
+	border-radius: 40px;
+	outline: none;
+	padding-left: 15px;
+	padding-right: 50px;
+}
+
+header #search-submit{
+	margin-left: -50px;
+	color: white;
+	background: transparent;
+	border:none;
+	outline: none;
+	cursor: pointer;
+}
+
+::placeholder{
+	color: white;
+	opacity: 0.5;
+}
+
+header #search-submit{
+	height: 60px;
+
+}
+
+/* City */
+
+main{
+	margin-top: 25px;
+}
+
+main #location{
+	font-size: 30px;
+	text-align: center; 
+}
+
+main #desc{
+	font-size: 20px;
+	text-align: center; 
+}
+
+main #temp{
+	font-size: 35px;
+	text-align: center; 
+}
+
+#WeatherWear{
+	margin-top: 10em;
+	text-align: center;
+}
+
+#unit-selector{
+	position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+
+#celc, #faren{
+	margin: 2px;
+	border: 1px solid black;
+	outline: none;
+	cursor: pointer;
+	background: transparent;
+}
+
+#w2w{
+	text-align: center;
+	margin-top: 5em;
+}
+
+#what-to-wear{
+	text-align: center;
+	list-style-type: none;
+}

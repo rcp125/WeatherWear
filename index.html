@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>WeatherWear</title>
+      <!-- STYLESHEETS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+      <link rel="stylesheet" href="style.css">
+      <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+   </head>
+   <body>
+      <header>
+         <h1>WeatherWear</h1>
+         <div class="search-container">
+            <input type="text" placeholder="Enter City or Zipcode" id="search-input">
+            <button type="submit" id="search-submit"><i class="fa fa-search" aria-hidden="true"></i></i></button>
+         </div>
+      </header>
+      <main>
+         <div id="location"></div>
+         <div id="desc"></div>
+         <div id="temp"></div>
+
+         <div id="WeatherWear">
+            <h1>What is WeatherWear?</h1>
+            <p>WeatherWear is a web application that considers various weather factors to determine the optimal
+            clothing to wear at a specific time at any location. Features include...  <br>
+            - Changing backgrounds according to weather <br>
+            - Accurate current weather and temperature <br>
+            - Ability to change from Celcius to Farenheit <br>
+            - Ability to choose any location via zipcode or city name</p>
+            <h3>How it Works</h3>
+            <p>- Click on the search bar above and enter the location's zipcode or city name. Below, you will see
+            weather statistics as well as a description of what we recommend to wear.</p>
+         </div>
+         <div id="w2w">
+            <ul id="what-to-wear"></ul>
+         </div>
+      </main>
+      <footer id="unit-container">
+         <div id="unit-selector">
+            <button onclick="changeCelc()" id="celc">C</button>
+            <button onclick="changeFaren()" id="faren">F</button>
+         </div>
+      </footer>
+      <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+      <script src="script.js"></script>
+   </body>
+</html>
