@@ -15,10 +15,12 @@ searchInput.addEventListener("keyup", inputLogger);
 
 function changeCelc(){
     units = "metric";
+    urlBuilder();
 }
 
 function changeFaren(){
     units = "imperial";
+    urlBuilder();
 }
 
 function inputLogger(event) {
@@ -41,8 +43,6 @@ function urlBuilder() {
     }
 }
 
-var appendOnce = true;
-
 function mainFunction(response) {
     WeatherWear.style.display = "none";
     let data = JSON.parse(response);
@@ -50,16 +50,14 @@ function mainFunction(response) {
     description.innerHTML = data.weather[0].description;
     if(units == "metric"){
         temperature.innerHTML = parseInt(data.main.temp) + "° C";
-        urlBuilder();
     }
     else{
         temperature.innerHTML = parseInt(data.main.temp) + "° F";
-        urlBuilder();
     }    
     // Background Selector
     let val = parseInt(data.weather[0].id);
     if((val >= 200 && val <= 232)) {
-        document.body.className = 'storm-rain';
+        document.body.className = 'storm';
     }
     else if((val>=300 && val<=321) || (val>=500 && val<=501)) {
         document.body.className = 'drizzle';
@@ -97,66 +95,28 @@ function mainFunction(response) {
     let weatherMain = data.weather[0].main;
     let intTemp = parseInt(data.main.temp);
     
-    if(appendOnce){
-        if(weatherMain == "Clear"){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("The sky is clear.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
+        if(weatherMain == "Clear" || weatherMain == "Clouds"){
+            if ((units == "imperial" && intTemp>80) || (units == "metric" && intTemp > 26)) {
+                document.getElementById("figure").src = "figure/hot.png";
+            }
+            else if((units == "imperial" && intTemp>60) || (units == "metric" && intTemp > 16)){
+                document.getElementById("figure").src = "figure/warm.png";
+            }
         }
-        if(weatherMain == "Clouds"){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("It's cloudy. You might want to wear a light jacket.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
+        if(weatherMain == "Thunderstorm" || weatherMain == "Drizzle" || weatherMain == "Rain"){
+            document.getElementById("figure").src = "figure/rain.png";
         }
-        if(weatherMain == "Thunderstorm"){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("Watch out for lightning. Stay away from metal.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
+        if(weatherMain != "Thunderstorm" && weatherMain != "Drizzle" && weatherMain != "Rain"){
+            if((units == "imperial" && intTemp < 30) || (units == "metric" && intTemp < -1)){
+                document.getElementById("figure").src = "figure/freezing.png";
+            }
+            else if((units == "imperial" && intTemp < 40) || (units == "metric" && intTemp < 4)){
+                document.getElementById("figure").src = "figure/cold.png";
+            }
+            else if ((units == "imperial" && intTemp <= 60) || (units == "metric" && intTemp <= 16)) {
+                document.getElementById("figure").src = "figure/chilly.png";
+            } 
         }
-        if(weatherMain == "Drizzle" || weatherMain == "Rain"){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("It's raining. Grab an umbrella and a raincoat.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-        if(weatherMain == "Snow"){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("It's snowing. Grab a heavy winter jacket and stay warm.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-        if(units == "imperial" && intTemp < 40){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("Brrr. It's cold. Better grab a winter coat.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-        if(units == "imperial" && (intTemp >= 40 && intTemp < 65)){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("The temperature outside is moderate but you might want a light jacket.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-        if(units == "imperial" && (intTemp >= 65 && intTemp < 80)){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("It's warm outside, woohoo. Just a long sleeves shirt or a t-shirt will suffice");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-        if(units == "imperial" && intTemp >= 80){
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode("It's hot outside. Grab some sunscreen and wear a t-shirt.");
-            node.appendChild(textnode);
-            document.getElementById("what-to-wear").appendChild(node);
-        }
-
-        appendOnce = false;
-    }
-    
-
 }
 
 function xmlRequest(url, callback) {
