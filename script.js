@@ -1,4 +1,4 @@
-const appKey = "f855d9e0767361072b8bc158517ccef0";
+const appKey = "XXXXXXXXXXXX";
 
 let units = "imperial";
 
